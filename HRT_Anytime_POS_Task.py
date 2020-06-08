@@ -39,10 +39,10 @@ iss = [0.48649, 7.2763, 0.1620]
 sparsity = 0.01
 regs =  [0.01,0.0001,0.1]
 
-dataset = spio.loadmat('./dataset_srl/inputs.mat', squeeze_me=True)
+dataset = spio.loadmat('./dataset/inputs.mat', squeeze_me=True)
 inputs = [inp.T for inp in dataset['inputs']]
 
-dataset = spio.loadmat('./dataset_srl/targets_ph.mat', squeeze_me=True)
+dataset = spio.loadmat('./dataset/targets_ph.mat', squeeze_me=True)
 targets = [inp for inp in dataset['targets_PH']]
 
 # one-hot encoding
@@ -58,13 +58,13 @@ hrt = HRT(Nu,Nr,Nl, sparsity, rhos, lis, iss, regs)
 # Phoneme Prediction Task
 inputs = hrt.trainTest(0,inputs,targets, trainIndexes, testIndexes)
 inputs = [inp.T for inp in inputs]
-dataset = spio.loadmat('./dataset_srl/targets_wd.mat', squeeze_me=True)
+dataset = spio.loadmat('./dataset/targets_wd.mat', squeeze_me=True)
 targets = [inp for inp in dataset['targets_WD']]
 
 # Word Prediction Task
 inputs = hrt.trainTest(1,inputs,targets, trainIndexes, testIndexes)
 inputs = [inp.T for inp in inputs]
-dataset = spio.loadmat('./dataset_srl/targets_pos.mat', squeeze_me=True)
+dataset = spio.loadmat('./dataset/targets_pos.mat', squeeze_me=True)
 targets = [inp for inp in dataset['targets']]
 
 # POS Prediction Task
