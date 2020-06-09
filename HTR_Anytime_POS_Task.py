@@ -1,8 +1,8 @@
 #!/usr/bin/env python
 # coding: utf-8
 '''
-This is an example of anytime POS classification by using Hierarchical Reservoir Task (HRT) model
-Reference paper for HRT model:
+This is an example of anytime POS classification by using Hierarchical-Task Reservoir (HTR) model
+Reference paper for HTR model:
 L. Pedrelli, H. Xavier, "Hierarchical-Task Reservoir for Anytime POS Tagging from Continuous Speech", IJCNN, 2020
 
 ----
@@ -17,7 +17,7 @@ https://team.inria.fr/mnemosyne/
 ----
 '''
 
-from HRT import HRT
+from HTR import HTR
 from reservoirpy import ESN
 import numpy as np
 import scipy as sp
@@ -53,7 +53,7 @@ for target in targets:
     targets_2.append(np.transpose(I[np.array(list(map(int, target)))-1]))
 targets = targets_2
 
-hrt = HRT(Nu,Nr,Nl, sparsity, rhos, lis, iss, regs)
+hrt = HTR(Nu,Nr,Nl, sparsity, rhos, lis, iss, regs)
 
 # Phoneme Prediction Task
 inputs = hrt.trainTest(0,inputs,targets, trainIndexes, testIndexes)

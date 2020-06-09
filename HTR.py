@@ -5,11 +5,11 @@ import numpy as np
 import scipy as sp
 from reservoirpy import ESN
 
-class HRT(object):
+class HTR(object):
     '''
-    Hierarchical Reservoir Task (HRT) class:
-    this class implement the HRT model suitable for sequence modeling.
-    Reference paper for HRT model:
+    Hierarchical-Task Reservoir (HTR) class:
+    this class implement the HTR model suitable for sequence modeling.
+    Reference paper for HTR model:
     L. Pedrelli, H. Xavier, "Hierarchical-Task Reservoir for Anytime POS Tagging from Continuous Speech", IJCNN, 2020
     
     ----
