@@ -25,9 +25,9 @@ An example of Anytime POS Tagging from Continuous Speech by using the HTR model.
     ```
 2. Define the HTR model
     ```python
-    hrt = HTR(Nu,Nr,Nl, sparsity, rhos, lis, iss, regs)
+    htr = HTR(Nu,Nr,Nl, sparsity, rhos, lis, iss, regs)
     ```
 3. Train the layer l and compute the outputs
     ```python
-    inputs = hrt.trainTest(l,inputs,targets, trainIndexes, testIndexes)
+    inputs = htr.trainTest(l,inputs,targets, trainIndexes, testIndexes)
     ```
