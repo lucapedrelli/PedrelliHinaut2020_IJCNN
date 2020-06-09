@@ -69,7 +69,7 @@ targets = [inp for inp in dataset['targets']]
 
 # POS Prediction Task
 outputs = htr.trainTest(2,inputs,targets, trainIndexes, testIndexes)
-print('Test Error on POS Task: ', np.mean(np.argmax(np.concatenate(outputs[trainIndexes:trainIndexes+testIndexes],axis=1),axis=0) != np.argmax(np.concatenate(targets[trainIndexes:trainIndexes+testIndexes],axis=1),axis=0)))
+print('Test Error on POS Task: ', np.mean(np.argmax(np.concatenate(outputs[trainIndexes:testIndexes],axis=1),axis=0) != np.argmax(np.concatenate(targets[trainIndexes:testIndexes],axis=1),axis=0)))
 
 
 # In[ ]:

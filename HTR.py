@@ -46,7 +46,7 @@ class HTR(object):
     def trainTest(self, layer,inputs,targets, trainIndexes, testIndexes):
         print('state computation layer '+str(layer)+'...')
         all_states = self.layers[layer].compute_all_states(inputs[0:trainIndexes], workers=1, verbose=0)
-        all_states2 = self.layers[layer].compute_all_states(inputs[trainIndexes:trainIndexes+testIndexes], workers=1, verbose=0)
+        all_states2 = self.layers[layer].compute_all_states(inputs[trainIndexes:testIndexes], workers=1, verbose=0)
         print('done.')
         
         print('readout training layer '+str(layer)+'...')
