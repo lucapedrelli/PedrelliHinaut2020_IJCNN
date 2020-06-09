@@ -53,22 +53,22 @@ for target in targets:
     targets_2.append(np.transpose(I[np.array(list(map(int, target)))-1]))
 targets = targets_2
 
-hrt = HTR(Nu,Nr,Nl, sparsity, rhos, lis, iss, regs)
+htr = HTR(Nu,Nr,Nl, sparsity, rhos, lis, iss, regs)
 
 # Phoneme Prediction Task
-inputs = hrt.trainTest(0,inputs,targets, trainIndexes, testIndexes)
+inputs = htr.trainTest(0,inputs,targets, trainIndexes, testIndexes)
 inputs = [inp.T for inp in inputs]
 dataset = spio.loadmat('./dataset/targets_wd.mat', squeeze_me=True)
 targets = [inp for inp in dataset['targets_WD']]
 
 # Word Prediction Task
-inputs = hrt.trainTest(1,inputs,targets, trainIndexes, testIndexes)
+inputs = htr.trainTest(1,inputs,targets, trainIndexes, testIndexes)
 inputs = [inp.T for inp in inputs]
 dataset = spio.loadmat('./dataset/targets_pos.mat', squeeze_me=True)
 targets = [inp for inp in dataset['targets']]
 
 # POS Prediction Task
-outputs = hrt.trainTest(2,inputs,targets, trainIndexes, testIndexes)
+outputs = htr.trainTest(2,inputs,targets, trainIndexes, testIndexes)
 print('Test Error on POS Task: ', np.mean(np.argmax(np.concatenate(outputs[trainIndexes:trainIndexes+testIndexes],axis=1),axis=0) != np.argmax(np.concatenate(targets[trainIndexes:trainIndexes+testIndexes],axis=1),axis=0)))
 
 
